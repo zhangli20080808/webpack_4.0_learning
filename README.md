@@ -40,3 +40,12 @@ plugins 可以在webpack 运行到某个时刻的时候 帮我们去做一些事
 html-webpack-plugin 会在打包结束后自动生成一个html文件，并把打包后生成的js自动引入到这个html文件中  想要自动得到root  需要自己添加一个模板
 
 
+####SourceMap 的配置
+
+开发者模式  默认SourceMap已经配置进去了  关掉 devtool : ’none’ 需要你告诉我开发文件中的哪一行错了 而不是打包后的 
+比如 现在知道dist目录下的main.js 98行粗错啦  
+SourceMap 一个映射关系 他知道dist目录下的main.js的98行 实际上对应的是src目录下的index.js文件中的第一行
+线上环境出问题 我们相应的映射文件 生成错误的时候只带行信息 不带列信息
+
+#### WebpackDevServer 提升开发效率
+

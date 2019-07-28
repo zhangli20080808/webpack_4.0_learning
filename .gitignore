@@ -11,3 +11,5 @@ webpack.assets.json
 public/css/.sass-cache
 .sass-cache
 process.json
+dist/
+.idea/workspace.xml
