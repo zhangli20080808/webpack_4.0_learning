@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 // const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const webpack = require('webpack')
+const WorkBoxWebpackPlugin = require('workbox-webpack-plugin')
+//PWA  workbox-webpack-plugin
 
 
 module.exports = {
@@ -24,6 +26,16 @@ module.exports = {
         main: './src/index.js',
         // sub: './src/index.js'
     },
+    //当打包的时候遇到 lodash的时候，忽略
+    // externals: ["lodash"], //也可以是对象
+    // externals: {
+    //     lodash :{
+    //         //就是在commonjs的环境中 我们的lodash的名字必须写成  lodash 不能是下划线
+    //         // commonjs:'lodash'
+    //         lodash:'lodash' //页面上引入的名字必须是lodash
+    //     }
+    // },
+
     module: {
         rules: [
             //babel-loader webpack和babel做通信的一个桥梁 但并不会将代码中的es6翻译成es5 还需要借助一些其他的模块 @babel/preset-env
@@ -95,7 +107,10 @@ module.exports = {
         // publicPath: "http://cdn.com.cn",
         publicPath: "/", //加一个根路径
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        //对于库文件的打包
+        // library: 'root',  //会向全局注入一个变量//
+        // libraryTarget: "umd"   //通用
     },
     //plugins  可以在webpack 运行到某个时刻的时候 帮我们去做一些事情 就想生命周期函数一样
     plugins: [
@@ -107,7 +122,11 @@ module.exports = {
         // new AssetsWebpackPlugin({
         // 	filename: 'webpack.assets.json',
         // })
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new WorkBoxWebpackPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        })
     ],
     devServer: {
         contentBase: './dist',
@@ -116,7 +135,7 @@ module.exports = {
         port: 8090,
         //即便是hrm的功能没有生效 我们也不让他刷新浏览器
         hot: true,
-        hotOnly: true,
+        // hotOnly: true,
         proxy: {
             '/api': 'localhost:3000'
         }

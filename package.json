@@ -13,6 +13,7 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "assets-webpack-plugin": "^3.9.10",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
@@ -26,11 +27,14 @@
     "url-loader": "^1.1.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.7.0",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "@babel/runtime-corejs2": "^7.5.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "webpack": "^4.25.1"
   }
 }
