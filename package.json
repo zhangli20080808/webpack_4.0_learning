@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js",
+    "build": "webpack --config ./build/webpack.pro.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
@@ -28,6 +30,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {

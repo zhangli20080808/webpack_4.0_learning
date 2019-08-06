@@ -1,6 +1,8 @@
 // import '@babel/polyfill';
 import React,{Component,useState,useEffect} from 'react'
 import ReactDom from 'react-dom'
+import ContextTest from './components/ContextTest'
+import {add} from './math'
 
 // React类负责逻辑控制 比如修改数据 -> vdom
 // ReactDom 负责渲染 vdom-> dom
@@ -26,23 +28,30 @@ function ClockFunc() {
     return <div>{data.toLocaleTimeString()}</div>
 }
 
-class App extends Component {
-    render() {
-        return <div>hello world</div>
-    }
-}
+add(1,19)
+
+// class App extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 <ContextTest/>
+//                 <ClockFunc/>
+//             </div>
+//         )
+//     }
+// }
 
 
-ReactDom.render(<ClockFunc/>,document.getElementById('root'))
-
-const arr = [
-    new Promise(()=>{}),
-    new Promise(()=>{})
-]
-
-arr.map(item=>{
-    console.log(item)
-})
+// ReactDom.render(<App/>,document.getElementById('root'))
+//
+// const arr = [
+//     new Promise(()=>{}),
+//     new Promise(()=>{})
+// ]
+//
+// arr.map(item=>{
+//     console.log(item)
+// })
 
 //server-worker注册成功之后
 // if('serviceWorker' in navigator){
@@ -54,3 +63,7 @@ arr.map(item=>{
 //         })
 //     })
 // }
+
+//高阶组件 为了提高组件复用率，可测试性，就要保证组件功能单一性 但是你需求一旦复杂  就要拓展你这个功能单一的组件
+//就有了高阶组件的概念  高阶组件就是一个工厂函数 接受一个组件并且返回一个组件
+
